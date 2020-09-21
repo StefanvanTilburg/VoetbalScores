@@ -42,6 +42,14 @@ public class Wedstrijd {
     }
 
     public void printWedstrijdPunten() {
-        System.out.printf("Dit levert %d wedstrijdpunten op.\n", this.bepaalWedstrijdPunten());
+        //  3
+        //  1   Dit levert 1 wedstrijdpunt op
+        //  0   Dit levert geen wedstrijpunt op
+        switch (this.bepaalWedstrijdPunten()) {
+            case 3: System.out.print("Dit levert 3 wedstrijdpunten op.\n"); break;
+            case 1: System.out.print("Dit levert 1 wedstrijdpunt op.\n"); break;
+            case 0: System.out.print("Dit levert geen wedstrijdpunten op.\n"); break;
+        }
+
     }
 }
