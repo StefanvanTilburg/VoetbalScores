@@ -7,9 +7,9 @@ import java.util.Scanner;
 /**
  * @author Stefan van Tilburg
  * <p>
- * Opdracht
+ * Opdracht 1.2 Voetbalscores, Main methode
  * <p>
- * Doel
+ * Doel     VoetbalScoresLauncher fungeert als controller voor de Wedstrijd class.
  */
 public class VoetbalScoresLauncher {
     public static void main(String[] args) {

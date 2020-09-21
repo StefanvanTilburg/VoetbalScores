@@ -3,9 +3,10 @@ package model;
 /**
  * @author Stefan van Tilburg
  * <p>
- * Opdracht
+ * Opdracht 1.2 Voetbalscores, class Wedstrijd
  * <p>
- * Doel
+ * Doel     Ontwerp class Wedstrijd volgens opdracht, waarbij naam Tegenstander, voor doelpunten en tegendoelpunten
+ *          geadministreerd kunnen worden. Op basis van gegevens wedstrijdpunten bepalen en wedstrijdstand teruggeven.
  */
 public class Wedstrijd {
     public String naamTegenstander;
@@ -42,9 +43,6 @@ public class Wedstrijd {
     }
 
     public void printWedstrijdPunten() {
-        //  3
-        //  1   Dit levert 1 wedstrijdpunt op
-        //  0   Dit levert geen wedstrijpunt op
         switch (this.bepaalWedstrijdPunten()) {
             case 3: System.out.print("Dit levert 3 wedstrijdpunten op.\n"); break;
             case 1: System.out.print("Dit levert 1 wedstrijdpunt op.\n"); break;
