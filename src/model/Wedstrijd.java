@@ -3,7 +3,7 @@ package model;
 /**
  * @author Stefan van Tilburg
  * <p>
- * Opdracht 1.2 Voetbalscores, class Wedstrijd
+ * Opdracht Voetbalscores, class Wedstrijd
  * <p>
  * Doel     Ontwerp class Wedstrijd volgens opdracht, waarbij naam Tegenstander, voor doelpunten en tegendoelpunten
  *          geadministreerd kunnen worden. Op basis van gegevens wedstrijdpunten bepalen en wedstrijdstand teruggeven.
