@@ -3,8 +3,6 @@ package controller;
 import model.Team;
 import model.Wedstrijd;
 
-import java.util.Scanner;
-
 /**
  * @author Stefan van Tilburg
  * <p>
@@ -15,7 +13,10 @@ import java.util.Scanner;
 public class VoetbalScoresLauncher {
     public static void main(String[] args) {
 
-        Team newTeam = new Team("Twente", 15,28,12);
-        newTeam.printStatusTeam();
+        Team homeTeam = new Team("Ajax");
+        Team awayTeam = new Team("PEC");
+        Wedstrijd game = new Wedstrijd(homeTeam, awayTeam, 5, 0);
+        game.printUitslag();
+        game.printWedstrijdPunten();
     }
 }

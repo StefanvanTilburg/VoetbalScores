@@ -9,45 +9,102 @@ package model;
  *          geadministreerd kunnen worden. Op basis van gegevens wedstrijdpunten bepalen en wedstrijdstand teruggeven.
  */
 public class Wedstrijd {
-    public String naamTegenstander;
-    public int voorDoelpunten;
-    public int tegenDoelpunten;
+    private Team teamThuis;
+    private Team teamUit;
+    private int voorDoelpunten;
+    private int tegenDoelpunten;
+    private int totaalWedstrijdpunten;
 
-    public Wedstrijd(String naamTegenstander, int voorDoelpunten, int tegenDoelpunten) {
-        this.naamTegenstander = naamTegenstander;
-        this.voorDoelpunten = voorDoelpunten;
-        this.tegenDoelpunten = tegenDoelpunten;
+    public Wedstrijd(Team teamThuis, Team teamUit, int voorDoelpunten, int tegenDoelpunten) {
+        this.setTeamThuis(teamThuis);
+        this.setTeamUit(teamUit);
+        this.setVoorDoelpunten(voorDoelpunten);
+        this.setTegenDoelpunten(tegenDoelpunten);
     }
 
-    public Wedstrijd(String naamTegenstander) {
-        this(naamTegenstander, 0, 0);
+    public Wedstrijd(Team teamThuis, Team teamUit) {
+        this(teamThuis, teamUit, 0,0);
     }
 
     public Wedstrijd() {
-        this("Onbekend");
+        this(new Team(), new Team());
     }
 
-    public int bepaalWedstrijdPunten() {
-        if (voorDoelpunten > tegenDoelpunten) {
+    public int getWedstrijdPuntenThuisTeam() {
+        if (getVoorDoelpunten() > getTegenDoelpunten()) {
             return 3;
-        } else if (voorDoelpunten == tegenDoelpunten) {
+        } else if (getVoorDoelpunten() == getTegenDoelpunten()) {
             return 1;
         } else {
             return 0;
         }
     }
 
+    public int getWedstrijdPuntenUitTeam() {
+        if (getTegenDoelpunten() > getVoorDoelpunten()) {
+            return 3;
+        } else if (getTegenDoelpunten() == getVoorDoelpunten()) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    public void setWedstrijdPuntenThuisTeam() {
+        teamThuis.setTotaalWedstrijdPunten(teamThuis.getTotaalWedstrijdPunten() + getWedstrijdPuntenThuisTeam());
+    }
+
+    public void setWedstrijdpuntenUitTeam() {
+        teamUit.setTotaalWedstrijdPunten(teamUit.getTotaalWedstrijdPunten() + getWedstrijdPuntenUitTeam());
+    }
+
+    public void setTotaalDoelpuntenTeams() {
+        teamThuis.setTotaalVoorDoelpunten(getVoorDoelpunten());
+        teamThuis.setTotaalTegenDoelpunten(getTegenDoelpunten());
+        teamUit.setTotaalVoorDoelpunten(getTegenDoelpunten());
+        teamUit.setTotaalTegenDoelpunten(getVoorDoelpunten());
+    }
+
     public void printUitslag() {
-        System.out.printf("Uitslag van de wedstrijd tegen %s: %d-%d\n",
-                            naamTegenstander, voorDoelpunten, tegenDoelpunten);
+        System.out.printf("Uitslag van de wedstrijd %s-%s: %d-%d\n",
+                            teamThuis.getTeamNaam(), teamUit.getTeamNaam(), getVoorDoelpunten(), getTegenDoelpunten());
     }
 
     public void printWedstrijdPunten() {
-        switch (this.bepaalWedstrijdPunten()) {
-            case 3: System.out.print("Dit levert 3 wedstrijdpunten op.\n"); break;
-            case 1: System.out.print("Dit levert 1 wedstrijdpunt op.\n"); break;
-            case 0: System.out.print("Dit levert geen wedstrijdpunten op.\n"); break;
-        }
+        System.out.printf("Dit levert %d wedstrijdpunten voor %s en %d wedstrijdpunten voor %s",
+                getWedstrijdPuntenThuisTeam(), teamThuis.getTeamNaam(),
+                getWedstrijdPuntenUitTeam(), teamUit.getTeamNaam());
+    }
 
+    public Team getTeamThuis() {
+        return teamThuis;
+    }
+
+    public void setTeamThuis(Team teamThuis) {
+        this.teamThuis = teamThuis;
+    }
+
+    public Team getTeamUit() {
+        return teamUit;
+    }
+
+    public void setTeamUit(Team teamUit) {
+        this.teamUit = teamUit;
+    }
+
+    public int getVoorDoelpunten() {
+        return voorDoelpunten;
+    }
+
+    public void setVoorDoelpunten(int voorDoelpunten) {
+        this.voorDoelpunten = voorDoelpunten;
+    }
+
+    public int getTegenDoelpunten() {
+        return tegenDoelpunten;
+    }
+
+    public void setTegenDoelpunten(int tegenDoelpunten) {
+        this.tegenDoelpunten = tegenDoelpunten;
     }
 }
