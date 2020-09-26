@@ -13,7 +13,6 @@ public class Wedstrijd {
     private Team teamUit;
     private int voorDoelpunten;
     private int tegenDoelpunten;
-    private int totaalWedstrijdpunten;
 
     public Wedstrijd(Team teamThuis, Team teamUit, int voorDoelpunten, int tegenDoelpunten) {
         this.setTeamThuis(teamThuis);
@@ -31,9 +30,9 @@ public class Wedstrijd {
     }
 
     public int getWedstrijdPuntenThuisTeam() {
-        if (getVoorDoelpunten() > getTegenDoelpunten()) {
+        if (this.getVoorDoelpunten() > this.getTegenDoelpunten()) {
             return 3;
-        } else if (getVoorDoelpunten() == getTegenDoelpunten()) {
+        } else if (this.getVoorDoelpunten() == this.getTegenDoelpunten()) {
             return 1;
         } else {
             return 0;
@@ -41,9 +40,9 @@ public class Wedstrijd {
     }
 
     public int getWedstrijdPuntenUitTeam() {
-        if (getTegenDoelpunten() > getVoorDoelpunten()) {
+        if (this.getTegenDoelpunten() > this.getVoorDoelpunten()) {
             return 3;
-        } else if (getTegenDoelpunten() == getVoorDoelpunten()) {
+        } else if (this.getTegenDoelpunten() == this.getVoorDoelpunten()) {
             return 1;
         } else {
             return 0;
@@ -51,23 +50,24 @@ public class Wedstrijd {
     }
 
     public void setWedstrijdPuntenThuisTeam() {
-        teamThuis.setTotaalWedstrijdPunten(teamThuis.getTotaalWedstrijdPunten() + getWedstrijdPuntenThuisTeam());
+        teamThuis.setTotaalWedstrijdPunten(teamThuis.getTotaalWedstrijdPunten() + this.getWedstrijdPuntenThuisTeam());
     }
 
-    public void setWedstrijdpuntenUitTeam() {
-        teamUit.setTotaalWedstrijdPunten(teamUit.getTotaalWedstrijdPunten() + getWedstrijdPuntenUitTeam());
+    public void setWedstrijdPuntenUitTeam() {
+        teamUit.setTotaalWedstrijdPunten(teamUit.getTotaalWedstrijdPunten() + this.getWedstrijdPuntenUitTeam());
     }
 
     public void setTotaalDoelpuntenTeams() {
-        teamThuis.setTotaalVoorDoelpunten(getVoorDoelpunten());
-        teamThuis.setTotaalTegenDoelpunten(getTegenDoelpunten());
-        teamUit.setTotaalVoorDoelpunten(getTegenDoelpunten());
-        teamUit.setTotaalTegenDoelpunten(getVoorDoelpunten());
+        teamThuis.setTotaalVoorDoelpunten(teamThuis.getTotaalVoorDoelpunten() + this.getVoorDoelpunten());
+        teamThuis.setTotaalTegenDoelpunten(teamThuis.getTotaalTegenDoelpunten() + this.getTegenDoelpunten());
+        teamUit.setTotaalVoorDoelpunten(teamUit.getTotaalVoorDoelpunten() + this.getTegenDoelpunten());
+        teamUit.setTotaalTegenDoelpunten(teamUit.getTotaalTegenDoelpunten() + this.getVoorDoelpunten());
     }
 
     public void printUitslag() {
         System.out.printf("Uitslag van de wedstrijd %s-%s: %d-%d\n",
-                            teamThuis.getTeamNaam(), teamUit.getTeamNaam(), getVoorDoelpunten(), getTegenDoelpunten());
+                            teamThuis.getTeamNaam(), teamUit.getTeamNaam(),
+                            this.getVoorDoelpunten(), this.getTegenDoelpunten());
     }
 
     public void printWedstrijdPunten() {

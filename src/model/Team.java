@@ -34,7 +34,7 @@ public class Team {
 
     public void printStatusTeam() {
         System.out.printf("Het team %s heeft %d wedstrijdpunt(en) en een doelsaldo van %d\n",
-                            getTeamNaam(), getTotaalWedstrijdPunten(), getDoelSaldo());
+                            this.getTeamNaam(), this.getTotaalWedstrijdPunten(), this.getDoelSaldo());
     }
 
     public int getTotaalWedstrijdPunten() {
